@@ -23,9 +23,19 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
+      - name: Check npm version
+        id: check_npm
+        run: OUTPUT=$(npm -v)
+
+      - name: Update npm
+        if: ${{ steps.check_npm.outputs.OUTPUT }} != 5.7*
+        run: |
+          npm install -g npm@'>=5.7.1'
+
       - name:  Compile JS
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      - if [[ `npm -v` != 5.7* ]]; then npm install -g npm@'>=5.7.1'; fi
         run: |
           npx ci
           npm run compile
