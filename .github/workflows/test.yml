@@ -46,5 +46,17 @@ jobs:
           npm run build:basic
           npm run build:customised
           npm run build:sections
+      
+      - name: Run cypress pre
+        run: | 
+          npm run test:cypress:pre
+      
+      - name: Run cypress start server
+        run: | 
+          npm run test:cypress:startServer & npm run test:cypress:startServer:post
+      
+      - name: Run cypress run
+        run: | 
+          npm run test:cypress:run
 
     
