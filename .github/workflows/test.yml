@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [6.x, 8.x, 9.x]
+        node-version: [6.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -24,8 +24,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name:  Compile JS
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
-          npx danger ci
+          npx ci
           npm run compile
 
       - name: Build all examples
