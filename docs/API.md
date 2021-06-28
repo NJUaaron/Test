@@ -6,6 +6,7 @@
 
 * [Initialization](#initialization)
 * [Methods](#methods)
+<!-- my change -->
 
 <!-- tocstop -->
 
