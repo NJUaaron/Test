@@ -22,10 +22,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-        run: npx danger ci
       
       - name:  Compile JS
-        run: npm run compile
+        run: |
+          npx danger ci
+          npm run compile
 
       - name: Build all examples
         run: | 
