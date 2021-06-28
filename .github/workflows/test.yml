@@ -35,7 +35,6 @@ jobs:
       - name:  Compile JS
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - if [[ `npm -v` != 5.7* ]]; then npm install -g npm@'>=5.7.1'; fi
         run: |
           npx ci
           npm run compile
